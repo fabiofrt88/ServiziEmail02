@@ -11,4 +11,4 @@ spring:
           starttls:
             enable: true
 
-apiKey: "api"
+apiKey: "chiave"

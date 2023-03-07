@@ -7,6 +7,7 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import jakarta.mail.MessagingException;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class EmailService {
                 "<h2>You have a new message: </h2>" +
                 "<img src='https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png' alt='Alternative text' height='200'>" +
                 "<h3>" + text + "</h3>";
-        Content content = new Content("text/plain", htmlMsg);
+        Content content = new Content("text/html", htmlMsg);
         Mail mail = new Mail(from, title, to, content);
 
         SendGrid sg = new SendGrid(environment.getProperty("apiKey"));
